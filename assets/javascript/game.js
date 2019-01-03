@@ -2,32 +2,33 @@
 var letters = ['a','e','z','k','m','s','t','q','i','j']
 var count = 0;
 
+// global variables
 var wins = 0;
 var loss = 0;
 var guessLeft = 10;
 var guessSoFar = []
 
+
+
 wordGame();
 
+//function wordGame that has keyup listener which drives the program once a key is pressed in the keyboard
 function wordGame(){
-
-  
-
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keyup', function (event) {
+        if(count < 10){
         key = letters[count];
         console.log("looking for key: " + key)
-        gameLogic(event.key, key)
-   // wordGame();
+        gameLogic(event.key, key) 
+        }
+        else
+        alert("Game Over! Refresh Page to Play again") 
     })
-   
-    }
+}
 
-
-
+// Main logic of the game for Win/Loss
 function gameLogic(guess, guesskey){
             if(guess === guesskey)
-            {
-                
+            { 
                 wins++;
                 guessLeft = 0;
                 guessSoFar.push(guess);
@@ -39,8 +40,6 @@ function gameLogic(guess, guesskey){
                 count++;
                 guessLeft = 10;
                 guessSoFar = [];
-            
-                
             }
             else { 
                 guessLeft = guessLeft - 1;
@@ -58,5 +57,4 @@ function gameLogic(guess, guesskey){
                     guessSoFar = [];
                 }
         }  
-      
         }
