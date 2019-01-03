@@ -1,4 +1,6 @@
-# Pyschic-Game#
+
+# Pyschic-Game
+
 
 This game is a letter guessing Game. It is built using HTML and Javascript. The browser listens for user input from the keyboard, and based on the letter which is hardcoded in the program, it does the following: 
 
