@@ -11,21 +11,20 @@ wordGame();
 
 function wordGame(){
 
-    key = letters[count];
-    console.log("looking for key: " + key)
+  
 
-    document.addEventListener('keyup', function (event) {
-    gameLogic(event.key, key, function(){
-        //key = letters[count];
-         //console.log("looking for key: " + key)
-        gameLogic();
+    document.addEventListener('keydown', function (event) {
+        key = letters[count];
+        console.log("looking for key: " + key)
+        gameLogic(event.key, key)
+   // wordGame();
     })
-       })
+   
     }
 
 
 
-function gameLogic(guess, guesskey, callback){
+function gameLogic(guess, guesskey){
             if(guess === guesskey)
             {
                 
@@ -34,12 +33,13 @@ function gameLogic(guess, guesskey, callback){
                 guessSoFar.push(guess);
 
                 document.getElementById('wins').innerHTML = 'Wins: '+wins;
-                document.getElementById('guessSoFar').innerHTML = 'Your Guess so far:'+guessSoFar;
+                document.getElementById('guessSoFar').innerHTML = 'Your Guess so far:';
+                document.getElementById('guessLeft').innerHTML = 'Guess Left: 0';
 
                 count++;
                 guessLeft = 10;
                 guessSoFar = [];
-                callback();
+            
                 
             }
             else { 
@@ -47,14 +47,16 @@ function gameLogic(guess, guesskey, callback){
                 guessSoFar.push(guess)    
                 
                 document.getElementById('guessLeft').innerHTML = 'Guess Left: '+guessLeft;
-                document.getElementById('guessSoFar').innerHTML = 'Your Guess so far:'+guessSoFar; 
+                document.getElementById('guessSoFar').innerHTML = 'Your Guess so far: '+guessSoFar; 
 
                 if(guessLeft === 0)
                 {
                     loss++;
                     document.getElementById('losses').innerHTML = 'Losses: '+loss;
+                    count++;
+                    guessLeft = 10;
+                    guessSoFar = [];
                 }
-                callback();
         }  
       
         }
